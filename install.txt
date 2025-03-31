@@ -1,0 +1,21 @@
+
+	Programos diegimas:
+	
+	Diegiant programą reikia turėti serverį, kuriame veiktu php ir MySQL arba MariaDb duomenų bazė. Jei norite tik išmėginti jos galimybes siųlome įdiegti xampp serverį į savo kompiuterį.
+	
+	1. susikurti duomenų baze serveryje, kuriame veiks el.parduotuvė
+	2. įmportuoti failą databases/grupe14-20250331.sql į susikurtą duomenų bazę
+	3. paruoškite failus serveryje:
+		jei talpinsite visą projektą viename kataloge, kuris bus pasiekiamas per projekto url, tai visus failus nukopijuokite į to projekto katalogą
+		jei visą programos veikimą turite galimybę papildomai apsaugoti iškeldami daugumą failų į nepasiekiamą per url katalogą, tai visus failus nukpijuokite į tą katalogą, o index.php php failą iš public_html_htdocs katalogo
+		nukopijuokite į katalogą, kuris bus pasiekiamas per url
+		
+		pvz.: jei xampp serverio htdocs suskursite katalogą formos, o xampp serverio pagrindiniame kataloge sukursite projects, o jame formos katalogą, tai į tą projects/formos perkelkite visus failus, o
+		htdocs/formos nukopijuokite tik index.php iš public_html_htdocs katalogo
+		
+		jei bus tokia struktūra htdocs/formos/index.php failiuko koreguoti nereiks, kitu atveju (bet tik jei netalpinate visų failų kataloge, kuris pasiekiamasper url), pakoreguote htdocs/formos/index.php failą, kad jame esantis
+		kelias iki failo main.php būtu teisingas
+		
+		pakoreguote failą config.php pagal savo duomenų bazę, duomenų bazės vartotoją ir jo slaptažodį
+		
+		programa turėtu pradėti veikti, naršyklės adrese (url) nurodžius adresą http://serverio_adresas/programos_katalogas

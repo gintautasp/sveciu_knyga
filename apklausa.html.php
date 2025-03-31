@@ -61,13 +61,72 @@
 			font-style: italic;
 		}
 	</style>
+	<script>
+		function validateForm() { 																// tikrintiPasirinkimus() {
+		
+			alert ( 'tikrinam pasirinkimus ..' );
+		
+			pasirinkta_teisingai = true;
+			
+			pasirinkta_priemone = document.getElementById ( 'priemone' ).value;
+			
+			if ( pasirinkta_priemone == 'kita' ) {
+			
+				kita_priemone = document.getElementById ( 'kita_priemone' ).value;
+				
+				if ( kita_priemone.length < 3 ) {
+				
+					alert ( 'Pasirinkote kitą priemonę, iš priemonių sąrašo,\n todėl parašykite kokią žemiau esančiame laukelyje' )
+					pasirinkta_teisingai = false;
+				}
+			
+			}
+			
+			pasirinkta_bent_viena_prekiu_rusis = false;
+			
+			for( i= 1; i<15; i++ ) {
+			
+				prekiu_rusis = document.gelementById ( 'prekes_' + i );
+				
+				if ( prekiu_rusis.checked ) {
+				
+					pasirinkta_bent_viena_prekiu_rusis = true;
+				}
+			}
+			
+			prekiaus_kita = document.getElementById( 'prekiaus_kita' );
+				
+			if ( prekiaus_kita.checked ) {
+				
+				kitos_prekes = document.getElementById ( 'kitos_prekes' ).value;
+
+				if ( kita_prekes.length < 3 ) {
+				
+					alert ( 'Pasirinkote kitą prekes, iš prekių sąrašo,\n todėl parašykite kokiomis žemiau esančiame laukelyje' )
+					pasirinkta_teisingai = false;
+					
+				} else {
+				
+					pasirinkta_bent_viena_prekiu_rusis = true;
+				}
+			}
+
+			if ( ! pasirinkta_bent_viena_prekiu_rusis ) {
+			
+				alert ( 'Pasirinkite bent vieną prekių rūšį' );
+				pasirinkta_teisingai = false;
+			}
+		
+			return false;
+		}
+	</script>
 </head>
 <body>
 	<h2>Apklausa</h2>
 	<div id="pranesimai">	
 	</div>
 	<div id="ivedimo_forma">
-		<form method="POST" action="">
+		<form method="POST" action="" onsubmit="return validateForm()">
 			<label>Jusu vardas, slapyvardis</label>
 			<input type="text" name="vardas">
 			<label>Žinutė</label>
@@ -75,7 +134,7 @@
 			<h3>Maloniai prašome Jūsų atsakyti į keletą klausimų</h3>
 			<label>Jūsų lytis</label>
 			<div class="centre">
-				<input type="radio" name="lytis" value="vyr"> - vyr.<br>
+				<input type="radio" name="lytis" value="vyr" selected> - vyr.<br>
 				<input type="radio" name="lytis" value="mot"> - mot.<br>
 			</div>
 			<label>Jūsų būsima veikla</label>
@@ -89,7 +148,7 @@
 				<option value="dar_nenusprende">Dar nenusprendžiau</option>					
 			</select>
 			<label>Jei teks kurti el. parduotuvę, mėginsiu, ją sukurti su:</label>			
-			<select name="priemone">
+			<select name="priemone" id="priemone">
 				<option value="opencart">Opencart</option>
 				<option value="prestashop">Opencart</option>				
 				<option value="wordpress">Wordpress</option>
@@ -104,23 +163,23 @@
 			<input type="text" name="kita_priemone" value="">
 			<label>Jei prekiausiu tai ..</label>	
 			<div class="centre">			
-			<input type="checkbox" name="prekiaus[]" value="maisto"> - Maisto prekės<br>
-			<input type="checkbox" name="prekiaus[]" value="apranga"> - Apranga<br>
-			<input type="checkbox" name="prekiaus[]" value="avalyne"> - Avalynė<br>
-			<input type="checkbox" name="prekiaus[]" value="sporto"> - Sporto prekės<br>
-			<input type="checkbox" name="prekiaus[]" value="laisvalaikio"> - Laisvalaikio prekės<br>
-			<input type="checkbox" name="prekiaus[]" value="gyvunu"> - Prekės gyvunams<br>
-			<input type="checkbox" name="prekiaus[]" value="namu"> - Namu apyvokos prekės<br>
-			<input type="checkbox" name="prekiaus[]" value="automobiliu"> - Prekės automobiliams<br>
-			<input type="checkbox" name="prekiaus[]" value="baldai"> - Baldai<br>
-			<input type="checkbox" name="prekiaus[]" value="biuro"> - Biuro prekės<br>
-			<input type="checkbox" name="prekiaus[]" value="zaislai"> - Žaislai<br>
-			<input type="checkbox" name="prekiaus[]" value="vaikams"> - Vaikams<br>
-			<input type="checkbox" name="prekiaus[]" value="ivairios"> - Įvairios ir kitokios<br>	
-			<input type="checkbox" name="prekiaus[]" value="neapsisprende"> - Neapsisprendžiau<br>
-			<input type="checkbox" name="prekiaus[]" value="kita .."> - Kita<br>
+			<input type="checkbox" name="prekiaus[]" value="maisto" id="prekes_1"> - Maisto prekės<br>
+			<input type="checkbox" name="prekiaus[]" value="apranga" id="prekes_2"> - Apranga<br>
+			<input type="checkbox" name="prekiaus[]" value="avalyne" id="prekes_3"> - Avalynė<br>
+			<input type="checkbox" name="prekiaus[]" value="sporto" id="prekes_4"> - Sporto prekės<br>
+			<input type="checkbox" name="prekiaus[]" value="laisvalaikio" id="prekes_5"> - Laisvalaikio prekės<br>
+			<input type="checkbox" name="prekiaus[]" value="gyvunu" id="prekes_6"> - Prekės gyvunams<br>
+			<input type="checkbox" name="prekiaus[]" value="namu" id="prekes_7"> - Namu apyvokos prekės<br>
+			<input type="checkbox" name="prekiaus[]" value="automobiliu" id="prekes_8"> - Prekės automobiliams<br>
+			<input type="checkbox" name="prekiaus[]" value="baldai" id="prekes_9"> - Baldai<br>
+			<input type="checkbox" name="prekiaus[]" value="biuro" id="prekes_10"> - Biuro prekės<br>
+			<input type="checkbox" name="prekiaus[]" value="zaislai" id="prekes_11"> - Žaislai<br>
+			<input type="checkbox" name="prekiaus[]" value="vaikams" id="prekes_12"> - Vaikams<br>
+			<input type="checkbox" name="prekiaus[]" value="ivairios" id="prekes_13"> - Įvairios ir kitokios<br>	
+			<input type="checkbox" name="prekiaus[]" value="neapsisprende" id="prekes_14"> - Neapsisprendžiau<br>
+			<input type="checkbox" name="prekiaus[]" value="kita .." id="prekiaus_kita"> - Kita<br>
 			<label>Jei prekiausit kitomis prekėmis, įrašykite kokiomis</label>	
-			<input type="text" name="kitos_prekes" value="">			
+			<input type="text" name="kitos_prekes" value="" id="kitos_prekes">			
 			</div>			
 			<input type="submit" value="siusti">
 		</form>
